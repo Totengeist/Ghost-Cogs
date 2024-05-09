@@ -18,6 +18,16 @@ hours_url = "https://sdzsafaripark.org/visit#hours"
 parking = "General parking (automobiles and motorcycles): $20 per vehicle. RV parking: starting at $38. Preferred parking: starting at $38. First come, first served; there are no in and out privileges."
 parking_url = "https://sdzsafaripark.org/plan-your-visit#directions"
 
+[attractions.birch]
+name = "Birch Aquarium"
+logo = "https://yt3.googleusercontent.com/ytc/AIdro_kZ12KhtAnQVIuF0gFHgriVrVU56bGtHEKHZ1uqU9oNK8A=s176-c-k-c0x00ffffff-no-rj?.jpg"
+description = "Perched on a bluff overlooking the Pacific Ocean, Birch Aquarium at Scripps is the public exploration center for Scripps Institution of Oceanography at UC San Diego, featuring conservation breeding programs and interactive exhibits."
+website = "https://aquarium.ucsd.edu/"
+address = "2300 Expedition Way, La Jolla, CA 92037"
+hours_url = "https://aquarium.ucsd.edu/daily-schedule/"
+parking = "Free 3 hour parking. Full day permits available.
+parking_url = "https://aquarium.ucsd.edu/plan-your-visit"
+
 [attractions.leo-carillo]
 name = "Leo Carillo Ranch"
 description = "The personal retreat of 50s character actor Leo Carillo, featuring 27 acres of antique architecture, native plants and dozens of peacocks."
@@ -25,3 +35,25 @@ website = "http://carrillo-ranch.org/"
 address = "6200 Flying Leo Carrillo Ln, Carlsbad, CA 92009"
 hours = "9 AM to 5 PM daily"
 parking = "General parking is available."
+
+[attractions.childrens-pool]
+name = "Children's Pool"
+description = "The Children's Pool is a small beach in La Jolla partially protected by a seawall. Seals and sea lions visit the beach year-round."
+website = "https://www.sandiego.gov/lifeguards/beaches/pool"
+address = "850 Coast Blvd, La Jolla, CA 92037-4254"
+parking = "Parking is limited to nearby streets."
+
+[attractions.whiskers-wine]
+name = "Whiskers and Wine Cat Lounge"
+logo = "https://images.squarespace-cdn.com/content/v1/59b5afe6cf81e016621da57a/6aec34d1-1435-42fe-95a9-d8b094f96218/Signature+Logo+1000x1000+px.png"
+description = "San Diego's only liquor-licensed cat café lounge gives guests the chance to spend time with some kitties, eat, drink and relax. [Cat yoga](https://www.whiskersandwinebar.com/cat-yoga) available on weekends. Limited to 14 people inside the venue at a time."
+website = "https://www.whiskersandwinebar.com/"
+address = "2856 Adams Ave., San Diego, CA 92116"
+
+[attractions.la-jolla-shores]
+name = "La Jolla Shores Beach"
+description = "Swim with leopard sharks during the summer, or see other local ocean wildlife through snorkel tours."
+website = "https://www.sandiego.org/explore/things-to-do/beaches-bays/la-jolla.aspx"
+address = "8277 Camino Del Oro, La Jolla, CA 92037"
+parking = "Free public parking. First come, first served."
+
