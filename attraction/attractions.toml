@@ -1,0 +1,17 @@
+[[attractions]]
+slug = "sdzoo"
+name = "San Diego Zoo"
+website = "https://zoo.sandiegozoo.org/"
+address = "2920 Zoo Drive, San Diego, CA 92101"
+hours_url = "https://zoo.sandiegozoo.org/plan-your-visit#hours"
+parking = "Parking is free in the lot in front of the Zoo. Additional free parking is available throughout Balboa Park."
+parking_url = "https://zoo.sandiegozoo.org/plan-your-visit#directions"
+
+[[attractions]]
+slug = "sdsp"
+name = "San Diego Zoo Safari Park"
+website = "https://sdzsafaripark.org/"
+address = "15500 San Pasqual Valley Road, Escondido, California 92027-7017"
+hours_url = "https://sdzsafaripark.org/visit#hours"
+parking = "General parking (automobiles and motorcycles): $20 per vehicle. RV parking: starting at $38. Preferred parking: starting at $38. First come, first served; there are no in and out privileges."
+parking_url = "https://sdzsafaripark.org/plan-your-visit#directions"
