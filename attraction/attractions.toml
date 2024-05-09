@@ -25,7 +25,7 @@ description = "Perched on a bluff overlooking the Pacific Ocean, Birch Aquarium 
 website = "https://aquarium.ucsd.edu/"
 address = "2300 Expedition Way, La Jolla, CA 92037"
 hours_url = "https://aquarium.ucsd.edu/daily-schedule/"
-parking = "Free 3 hour parking. Full day permits available.
+parking = "Free 3 hour parking. Full day permits available."
 parking_url = "https://aquarium.ucsd.edu/plan-your-visit"
 
 [attractions.leo-carillo]
@@ -56,4 +56,3 @@ description = "Swim with leopard sharks during the summer, or see other local oc
 website = "https://www.sandiego.org/explore/things-to-do/beaches-bays/la-jolla.aspx"
 address = "8277 Camino Del Oro, La Jolla, CA 92037"
 parking = "Free public parking. First come, first served."
-
