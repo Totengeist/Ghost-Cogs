@@ -17,7 +17,7 @@
     "name": "Attraction",
     "permissions": [],
     "required_cogs": {},
-    "requirements": [],
-    "short": "Translate messages using google translate!",
+    "requirements": ["toml"],
+    "short": "Retrieve a random animal attraction in the San Diego area.",
     "type": "COG"
 }
