@@ -18,7 +18,7 @@ class Attraction(commands.Cog):
         # Your code will go here
         path = os.path.join(pathlib.Path(__file__).parent.resolve(), 'attractions.toml')
         data = toml.load(path)
-        item = random.choice(data['attractions'])
+        slug, item = random.choice(list(data['attractions'].items()))
         embed = discord.Embed(title=item["name"], description=item["description"], url=item["website"])
 
         if "address" in item.keys():
@@ -27,6 +27,11 @@ class Attraction(commands.Cog):
         parking = self._descr_or_url(item, "parking", "parking_url")
         if parking != "":
             embed.add_field(name="Parking", value=parking, inline=False)
+
+        hours = self._descr_or_url(item, "hours", "hours_url")
+        if hours != "":
+            embed.add_field(name="Hours", value=hours, inline=False)
+        embed.set_footer(text=slug)
         await ctx.send(embed=embed)
 
     def _descr_or_url(self, data, description, url):
