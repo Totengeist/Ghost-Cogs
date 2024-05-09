@@ -31,7 +31,7 @@ class Attraction(commands.Cog):
         hours = self._descr_or_url(item, "hours", "hours_url")
         if hours != "":
             embed.add_field(name="Hours", value=hours, inline=False)
-        embed.set_footer(text=slug)
+        embed.set_footer(text="Attraction key: "+slug)
         await ctx.send(embed=embed)
 
     def _descr_or_url(self, data, description, url):
