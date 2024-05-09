@@ -21,6 +21,9 @@ class Attraction(commands.Cog):
         slug, item = random.choice(list(self.data['attractions'].items()))
         embed = discord.Embed(title=item["name"], description=item["description"], url=item["website"])
 
+        if "logo" in item.keys():
+            embed.set_thumbnail(url=item['logo'])
+
         if "address" in item.keys():
             embed.add_field(name="Address", value=item["address"], inline=False)
 
@@ -31,6 +34,7 @@ class Attraction(commands.Cog):
         hours = self._descr_or_url(item, "hours", "hours_url")
         if hours != "":
             embed.add_field(name="Hours", value=hours, inline=False)
+
         embed.set_footer(text="Attraction key: "+slug)
         await ctx.send(embed=embed)
 

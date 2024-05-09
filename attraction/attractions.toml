@@ -1,5 +1,6 @@
 [attractions.sd-zoo]
 name = "San Diego Zoo"
+logo = "https://farm66.staticflickr.com/65535/buddyicons/52070776@N06_r.jpg"
 description = "San Diego's world famous zoo houses 4,000 animals from more than 650 species. It is located in beautiful Balboa Park."
 website = "https://zoo.sandiegozoo.org/"
 address = "2920 Zoo Drive, San Diego, CA 92101"
@@ -9,6 +10,7 @@ parking_url = "https://zoo.sandiegozoo.org/plan-your-visit#directions"
 
 [attractions.safari-park]
 name = "San Diego Zoo Safari Park"
+logo = "https://farm66.staticflickr.com/65535/buddyicons/52070776@N06_r.jpg"
 description = "One of San Diego's largest tourist attractions, the Safari Park houses a large array of wild and endangered animals from every continent."
 website = "https://sdzsafaripark.org/"
 address = "15500 San Pasqual Valley Road, Escondido, CA 92027-7017"
