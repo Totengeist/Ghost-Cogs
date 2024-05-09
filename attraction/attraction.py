@@ -11,14 +11,14 @@ class Attraction(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        path = os.path.join(pathlib.Path(__file__).parent.resolve(), 'attractions.toml')
+        self.data = toml.load(path)
 
     @commands.command()
     async def attraction(self, ctx):
         """Retrieve a random attraction."""
         # Your code will go here
-        path = os.path.join(pathlib.Path(__file__).parent.resolve(), 'attractions.toml')
-        data = toml.load(path)
-        slug, item = random.choice(list(data['attractions'].items()))
+        slug, item = random.choice(list(self.data['attractions'].items()))
         embed = discord.Embed(title=item["name"], description=item["description"], url=item["website"])
 
         if "address" in item.keys():
@@ -32,6 +32,15 @@ class Attraction(commands.Cog):
         if hours != "":
             embed.add_field(name="Hours", value=hours, inline=False)
         embed.set_footer(text="Attraction key: "+slug)
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def listattractions(self, ctx):
+        """List all attractions."""
+        # Your code will go here
+        embed = discord.Embed(title="Attractions")
+        for slug, item in self.data['attractions'].items():
+            embed.add_field(name=slug, value=item['name'], inline=False)
         await ctx.send(embed=embed)
 
     def _descr_or_url(self, data, description, url):
