@@ -1,6 +1,7 @@
 [[attractions]]
 slug = "sdzoo"
 name = "San Diego Zoo"
+description = "San Diego's world famous zoo houses 4,000 animals from more than 650 species. It is located in beautiful Balboa Park."
 website = "https://zoo.sandiegozoo.org/"
 address = "2920 Zoo Drive, San Diego, CA 92101"
 hours_url = "https://zoo.sandiegozoo.org/plan-your-visit#hours"
@@ -10,6 +11,7 @@ parking_url = "https://zoo.sandiegozoo.org/plan-your-visit#directions"
 [[attractions]]
 slug = "sdsp"
 name = "San Diego Zoo Safari Park"
+description = "One of San Diego's largest tourist attractions, the Safari Park houses a large array of wild and endangered animals from every continent."
 website = "https://sdzsafaripark.org/"
 address = "15500 San Pasqual Valley Road, Escondido, California 92027-7017"
 hours_url = "https://sdzsafaripark.org/visit#hours"
