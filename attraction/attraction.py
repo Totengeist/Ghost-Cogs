@@ -1,5 +1,7 @@
 from redbot.core import commands
 import toml
+import os
+import random
 import pathlib
 
 class Attraction(commands.Cog):
