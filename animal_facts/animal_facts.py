@@ -22,9 +22,9 @@ class AnimalFacts(commands.Cog):
                 self.facts_available.append(i)
         for i in data["feature"]:
             if "date" in i.keys():
-                self.feature_used.append(i)
+                self.features_used.append(i)
             else:
-                self.feature_available.append(i)
+                self.features_available.append(i)
 
     @commands.command()
     async def listfacts(self, ctx):
