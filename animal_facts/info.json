@@ -1,0 +1,23 @@
+{
+    "author": [
+        "Totengeist"
+    ],
+    "description": "Retrieve a random fact about an animal found in the San Diego area (including zoos and aquariums).",
+    "install_msg": "",
+    "disabled": false,
+    "end_user_data_statement": "This cog does not persistently store data or metadata about users.",
+    "hidden": false,
+    "max_bot_version": "0.0.0",
+    "min_bot_version": "3.5.0",
+    "min_python_version": [
+        3,
+        7,
+        2
+    ],
+    "name": "AnimalFacts",
+    "permissions": [],
+    "required_cogs": {},
+    "requirements": ["toml"],
+    "short": "Retrieve a random animal fact",
+    "type": "COG"
+}
