@@ -25,8 +25,14 @@ fact = "Tigers can eat up to 40kg (88 lbs) of meat at one time and then go witho
 [[fact]]
 date = "2024-05-13"
 animal = "Least Bell's vireo"
-image="https://www.allaboutbirds.org/guide/assets/photo/302225541-480px.jpg"
+image = "https://www.allaboutbirds.org/guide/assets/photo/302225541-480px.jpg"
 fact = "The least Bell's vireo is an endangered species local to California and Baja California. It spends the winters in southern Baja, then returns to southern California between April and September for breeding season. Due to heavy human development in their primary beach habitats, least Bell's vireos are currently seen nesting in unusual habitats in Orange County including eucalyptus and blue elderberry shrubs."
+
+[[fact]]
+date = "2024-05-14"
+animal = "American Badger"
+image = "https://animals.sandiegozoo.org/sites/default/files/2016-09/animals_hero_honeybadger_0.jpg"
+fact = "American badgers are members of the weasel family and are considered indicators of *habitat connectivity* for conserved uplands in San Diego. If a badger can successfully find food and mates, this may indicate that other small wildlife that uses the same habitats will also succeed. The US Geological Survey has found 50 badger locations in San Diego and [is asking the public for help reporting sightings](https://www.usgs.gov/centers/werc/science/american-badgers-san-diego-county)."
 
 [[feature]]
 date = "2024-05-09"
