@@ -47,7 +47,10 @@ class AnimalFacts(commands.Cog):
             data = data + self.facts_used
 
         elif date:
-            data = [self._get_date(data, date)]
+            item = self._get_date(data, date)
+            if item:
+                data = [item]
+            else: data = []
 
         if not data:
             return
