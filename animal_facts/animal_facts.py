@@ -47,7 +47,7 @@ class AnimalFacts(commands.Cog):
             data = data + self.facts_used
 
         elif date:
-            item = self._get_date(data, date)
+            item = self._get_date(self.facts_used, date)
             if item:
                 data = [item]
             else: data = []
@@ -74,14 +74,12 @@ class AnimalFacts(commands.Cog):
             data = data + self.features_used
 
         elif date:
-            item = self._get_date(data, date)
+            item = self._get_date(self.features_used, date)
             print(item)
             if item:
                 data = [item]
             else:
                 data = []
-
-        print(data)
 
         if not data:
             return
@@ -115,7 +113,15 @@ class AnimalFacts(commands.Cog):
 
     @commands.command()
     async def listfacts(self, ctx):
-        for i in self.self.features_available + self.features_used
+        await ctx.send(f'### Facts')
+        for i in self.facts_available + self.facts_used:
+            if "date" in i:
+                date = i['date']
+            else:
+                date = "Date empty"
+            await ctx.send(f'`{date}    {i["animal"]}`')
+        await ctx.send(f'### Features')
+        for i in self.features_available + self.features_used:
             if "date" in i:
                 date = i['date']
             else:
