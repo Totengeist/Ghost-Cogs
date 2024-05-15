@@ -1,8 +1,7 @@
 import datetime
-import os
-import pathlib
 import random
 import re
+import urllib
 import toml
 
 from redbot.core import commands
@@ -14,23 +13,9 @@ class AnimalFacts(commands.Cog):
     """
 
     def __init__(self, bot):
+        self.url = "https://www.dropbox.com/scl/fi/4po0vsrtn39pnqhlayl7e/facts-features.toml?rlkey=8eyvutxcg4dquhv48ny4lvq35&st=dk6s2hf4&dl=1"
         self.bot = bot
-        path = os.path.join(pathlib.Path(__file__).parent.resolve(), 'facts-features.toml')
-        data = toml.load(path)
-        self.facts_available = []
-        self.facts_used = []
-        self.features_available = []
-        self.features_used = []
-        for i in data["fact"]:
-            if "date" in i.keys():
-                self.facts_used.append(i)
-            else:
-                self.facts_available.append(i)
-        for i in data["feature"]:
-            if "date" in i.keys():
-                self.features_used.append(i)
-            else:
-                self.features_available.append(i)
+        self._process_data()
 
     @commands.command()
     async def animalfact(self, ctx, arg = "all"):
@@ -68,14 +53,12 @@ class AnimalFacts(commands.Cog):
 
         data = self.features_available
         date = self._today_or_date(arg)
-        print(date)
 
         if arg == "all":
             data = data + self.features_used
 
         elif date:
             item = self._get_date(self.features_used, date)
-            print(item)
             if item:
                 data = [item]
             else:
@@ -103,7 +86,7 @@ class AnimalFacts(commands.Cog):
 
     async def _print_fact(self, ctx, fact):
         await(ctx.send(fact["image"]))
-        await(ctx.send(f'**Animal Fact of the Day: {fact["animal"]}**'))
+        await(ctx.send(f'### Animal Fact of the Day: {fact["animal"]}'))
         await(ctx.send(fact["fact"], suppress_embeds=True))
 
     async def _print_feature(self, ctx, feature):
@@ -111,19 +94,46 @@ class AnimalFacts(commands.Cog):
         await(ctx.send(feature["image"]))
         await(ctx.send(feature["feature"], suppress_embeds=True))
 
+    def _process_data(self):
+        self.facts_available = []
+        self.facts_used = []
+        self.features_available = []
+        self.features_used = []
+        
+        data = self._retrieve_data()
+        if data:
+            for i in data["fact"]:
+                if "date" in i.keys():
+                    self.facts_used.append(i)
+                else:
+                    self.facts_available.append(i)
+            for i in data["feature"]:
+                if "date" in i.keys():
+                    self.features_used.append(i)
+                else:
+                    self.features_available.append(i)
+
+    def _retrieve_data(self):
+        try:
+            with urllib.request.urlopen(self.url) as data:
+                return toml.loads(data.read())
+        except urllib.error.URLError as e:
+            print(e.reason)
+            return None
+
     @commands.command()
     async def listfacts(self, ctx):
-        await ctx.send(f'### Facts')
+        await ctx.send('### Facts')
         for i in self.facts_available + self.facts_used:
-            if "date" in i:
+            if 'date' in i:
                 date = i['date']
             else:
-                date = "Date empty"
-            await ctx.send(f'`{date}    {i["animal"]}`')
-        await ctx.send(f'### Features')
+                date = 'Date empty'
+            await ctx.send('`{date}    {i["animal"]}`')
+        await ctx.send('### Features')
         for i in self.features_available + self.features_used:
-            if "date" in i:
+            if 'date' in i:
                 date = i['date']
             else:
-                date = "Date empty"
+                date = 'Date empty'
             await ctx.send(f'`{date}    {i["animal"]}`')
