@@ -15,6 +15,11 @@ class AnimalFacts(commands.Cog):
     def __init__(self, bot):
         self.url = "https://www.dropbox.com/scl/fi/4po0vsrtn39pnqhlayl7e/facts-features.toml?rlkey=8eyvutxcg4dquhv48ny4lvq35&st=dk6s2hf4&dl=1"
         self.bot = bot
+        self.data_loaded = None
+        self.facts_available = []
+        self.facts_used = []
+        self.features_available = []
+        self.features_used = []
 
     @commands.command()
     async def animalfact(self, ctx, arg = "all"):
@@ -95,12 +100,15 @@ class AnimalFacts(commands.Cog):
         await(ctx.send(feature["image"]))
         await(ctx.send(feature["feature"], suppress_embeds=True))
 
-    def _process_data(self):
+    def _process_data(self, force=False):
+        if self.data_loaded != None and self.data_loaded > (datetime.datetime.now() + datetime.timedelta(minutes=-5)) and not force:
+            return
+
         self.facts_available = []
         self.facts_used = []
         self.features_available = []
         self.features_used = []
-        
+
         data = self._retrieve_data()
         if data:
             for i in data["fact"]:
@@ -118,8 +126,6 @@ class AnimalFacts(commands.Cog):
         try:
             with urllib.request.urlopen(self.url) as data:
                 data = data.read()
-                print(data)
-                print(data.decode("utf-8"))
                 return toml.loads(data.decode("utf-8"))
         except urllib.error.URLError as e:
             print(e.reason)
@@ -134,7 +140,7 @@ class AnimalFacts(commands.Cog):
                 date = i['date']
             else:
                 date = 'Date empty'
-            await ctx.send('`{date}    {i["animal"]}`')
+            await ctx.send(f'`{date}    {i["animal"]}`')
         await ctx.send('### Features')
         for i in self.features_available + self.features_used:
             if 'date' in i:
@@ -142,3 +148,8 @@ class AnimalFacts(commands.Cog):
             else:
                 date = 'Date empty'
             await ctx.send(f'`{date}    {i["animal"]}`')
+
+    @commands.command()
+    async def loaddata(self, ctx):
+        self._process_data(True)
+        await ctx.send('Data loaded')
