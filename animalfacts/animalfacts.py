@@ -122,8 +122,6 @@ class AnimalFacts(commands.Cog):
                     self.features_used.append(i)
                 else:
                     self.features_available.append(i)
-        print(self.features_available)
-        print(self.features_used)
 
     def _retrieve_data(self):
         try:
