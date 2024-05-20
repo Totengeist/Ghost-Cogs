@@ -1,4 +1,4 @@
-from .animal_facts import AnimalFacts
+from .animalfacts import AnimalFacts
 
 
 async def setup(bot):
