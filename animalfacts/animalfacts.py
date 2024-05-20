@@ -15,7 +15,6 @@ class AnimalFacts(commands.Cog):
     def __init__(self, bot):
         self.url = "https://www.dropbox.com/scl/fi/4po0vsrtn39pnqhlayl7e/facts-features.toml?rlkey=8eyvutxcg4dquhv48ny4lvq35&st=dk6s2hf4&dl=1"
         self.bot = bot
-        self._process_data()
 
     @commands.command()
     async def animalfact(self, ctx, arg = "all"):
@@ -25,6 +24,7 @@ class AnimalFacts(commands.Cog):
         msg = await ctx.channel.fetch_message(ctx.message.id)
         await msg.delete()
 
+        self._process_data()
         data = self.facts_available
         date = self._today_or_date(arg)
 
@@ -51,6 +51,7 @@ class AnimalFacts(commands.Cog):
         msg = await ctx.channel.fetch_message(ctx.message.id)
         await msg.delete()
 
+        self._process_data()
         data = self.features_available
         date = self._today_or_date(arg)
 
@@ -116,13 +117,17 @@ class AnimalFacts(commands.Cog):
     def _retrieve_data(self):
         try:
             with urllib.request.urlopen(self.url) as data:
-                return toml.loads(data.read())
+                data = data.read()
+                print(data)
+                print(data.decode("utf-8"))
+                return toml.loads(data.decode("utf-8"))
         except urllib.error.URLError as e:
             print(e.reason)
             return None
 
     @commands.command()
     async def listfacts(self, ctx):
+        self._process_data()
         await ctx.send('### Facts')
         for i in self.facts_available + self.facts_used:
             if 'date' in i:
