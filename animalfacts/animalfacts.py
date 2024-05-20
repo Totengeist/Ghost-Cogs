@@ -40,7 +40,8 @@ class AnimalFacts(commands.Cog):
             item = self._get_date(self.facts_used, date)
             if item:
                 data = [item]
-            else: data = []
+            else:
+                data = []
 
         if not data:
             return
@@ -98,7 +99,7 @@ class AnimalFacts(commands.Cog):
     async def _print_feature(self, ctx, feature):
         await(ctx.send(f'## {feature["animal"]} (*{feature["latin"]}*)'))
         await(ctx.send(feature["image"]))
-        await(ctx.send(feature["feature"], suppress_embeds=True))
+        await(ctx.send("\n\n".join(feature["feature"]), suppress_embeds=True))
 
     def _process_data(self, force=False):
         if self.data_loaded != None and self.data_loaded > (datetime.datetime.now() + datetime.timedelta(minutes=-5)) and not force:
@@ -121,12 +122,13 @@ class AnimalFacts(commands.Cog):
                     self.features_used.append(i)
                 else:
                     self.features_available.append(i)
+        print(self.features_available)
+        print(self.features_used)
 
     def _retrieve_data(self):
         try:
             with urllib.request.urlopen(self.url) as data:
-                data = data.read()
-                return toml.loads(data.decode("utf-8"))
+                return toml.loads(data.read().decode("utf-8"))
         except urllib.error.URLError as e:
             print(e.reason)
             return None
