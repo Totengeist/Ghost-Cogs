@@ -94,12 +94,12 @@ class AnimalFacts(commands.Cog):
     async def _print_fact(self, ctx, fact):
         await(ctx.send(fact["image"]))
         await(ctx.send(f'### Animal Fact of the Day: {fact["animal"]}'))
-        await(ctx.send(fact["fact"] + " ||<@1242549160612466799>||", suppress_embeds=True))
+        await(ctx.send(fact["fact"] + " ||<@&1242549160612466799>||", suppress_embeds=True))
 
     async def _print_feature(self, ctx, feature):
         await(ctx.send(f'## {feature["animal"]} (*{feature["latin"]}*)'))
         await(ctx.send(feature["image"]))
-        await(ctx.send("\n\n".join(feature["feature"]) + " ||<@1242549202869817405>||", suppress_embeds=True))
+        await(ctx.send("\n\n".join(feature["feature"]) + " ||<@&1242549202869817405>||", suppress_embeds=True))
 
     def _process_data(self, force=False):
         if self.data_loaded != None and self.data_loaded > (datetime.datetime.now() + datetime.timedelta(minutes=-5)) and not force:
