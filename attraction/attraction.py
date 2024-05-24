@@ -15,10 +15,15 @@ class Attraction(commands.Cog):
         self.data = toml.load(path)
 
     @commands.command()
-    async def attraction(self, ctx):
+    async def attraction(self, ctx, arg = None):
         """Retrieve a random attraction."""
         # Your code will go here
-        slug, item = random.choice(list(self.data['attractions'].items()))
+        
+        if arg:
+            slug = arg
+            item = self.data['attractions'][arg]
+        else:
+            slug, item = random.choice(list(self.data['attractions'].items()))
         embed = discord.Embed(title=item["name"], description=item["description"], url=item["website"])
 
         if "logo" in item.keys():
