@@ -2,6 +2,7 @@ import datetime
 import random
 import re
 import urllib
+import discord
 import toml
 
 from redbot.core import commands
