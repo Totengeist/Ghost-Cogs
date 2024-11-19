@@ -14,7 +14,8 @@ class AnimalFacts(commands.Cog):
     """
 
     def __init__(self, bot):
-        self.url = "https://www.dropbox.com/scl/fi/4po0vsrtn39pnqhlayl7e/facts-features.toml?rlkey=8eyvutxcg4dquhv48ny4lvq35&st=dk6s2hf4&dl=1"
+        self.facts_url = "https://github.com/Totengeist/animalfacts/raw/refs/heads/main/facts.toml"
+        self.features_url = "https://github.com/Totengeist/animalfacts/raw/refs/heads/main/features.toml"
         self.bot = bot
         self.data_loaded = None
         self.facts_available = []
@@ -125,9 +126,14 @@ class AnimalFacts(commands.Cog):
                     self.features_available.append(i)
 
     def _retrieve_data(self):
+        facts = {}
+        features = {}
         try:
-            with urllib.request.urlopen(self.url) as data:
-                return toml.loads(data.read().decode("utf-8"))
+            with urllib.request.urlopen(self.facts_url) as fact_data:
+                facts = toml.loads(fact_data.read().decode("utf-8"))
+            with urllib.request.urlopen(self.features_url) as feature_data:
+                features = toml.loads(feature_data.read().decode("utf-8"))
+            return {'fact': facts['fact'], 'feature': features['feature']}
         except urllib.error.URLError as e:
             print(e.reason)
             return None
